@@ -22,6 +22,10 @@ public class Category {
   @Column(nullable = false, unique = true, length = 50)
   private String categoryName;
 
+  public Category(String categoryName) {
+    this.categoryName = categoryName;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
