@@ -58,4 +58,13 @@ public class CategoryService {
 
     return new ResponseEntity<>("Category successfully updated", HttpStatus.OK);
   }
+
+  public ResponseEntity<?> deleteCategory(long categoryId) {
+
+    Category category = categoryRepository.findByCategoryId(categoryId)
+        .orElseThrow(() -> new ResourceNotFoundException("category", "categoryId", categoryId));
+
+    categoryRepository.delete(category);
+    return new ResponseEntity<>("Category successfully deleted", HttpStatus.OK);
+  }
 }
