@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +27,25 @@ public class CategoryController {
     return categoryService.getCategory(categoryId);
   }
 
+  @GetMapping
+  public ResponseEntity<?> getAllCategories(){
+    return categoryService.getAllCategories();
+  }
+
   @PostMapping
   public ResponseEntity<?> addCategory(@RequestParam @NotBlank @Size(min = 5, max = 50) String categoryName){
     return categoryService.addCategory(categoryName);
   }
+
+
+  @PatchMapping("/{categoryId}")
+  public ResponseEntity<?> updateCategory(
+      @PathVariable @Min(1) long categoryId,
+      @RequestParam @NotBlank @Size(min = 5, max = 50) String categoryName){
+    return categoryService.updateCategory(categoryId, categoryName);
+  }
+
+
 
 
 

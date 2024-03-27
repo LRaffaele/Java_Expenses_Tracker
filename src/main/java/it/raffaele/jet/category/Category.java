@@ -26,6 +26,11 @@ public class Category {
     this.categoryName = categoryName;
   }
 
+  public Category(long categoryId, String categoryName) {
+    this.categoryId = categoryId;
+    this.categoryName = categoryName;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
